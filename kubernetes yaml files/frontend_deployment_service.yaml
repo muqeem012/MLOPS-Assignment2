@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontendcontainer
-          image: muqeem/assignment2-kubernetestask-frontend:latest
+          image: muqeem/assignment2-kubernetes-frontend:latest
           ports:
            - containerPort: 80
 ---

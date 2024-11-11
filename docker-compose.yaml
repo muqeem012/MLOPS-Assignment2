@@ -10,13 +10,11 @@ services:
       build: ./backend
       ports:
         - 5000:5000
-      env:
+      environment:
         MONGO_URI: "mongodb://mongodb:27017/mernAuthenticationdb"
 
     mongodb:
       image: mongo:4.2
-      ports:
-        - 6000:27017
       volumes:
         - MLOPSassignment2:/data/db
 
