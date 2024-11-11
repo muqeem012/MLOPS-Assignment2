@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+    frontend:
+      build: ./frontend
+      ports:
+        - 3000:80
+
+    backend:
+      build: ./backend
+      ports:
+        - 5000:5000
+      env:
+        MONGO_URI: "mongodb://mongodb:27017/mernAuthenticationdb"
+
+    mongodb:
+      image: mongo:4.2
+      ports:
+        - 6000:27017
+      volumes:
+        - MLOPSassignment2:/data/db
+
+volumes:
+  MLOPSassignment2:

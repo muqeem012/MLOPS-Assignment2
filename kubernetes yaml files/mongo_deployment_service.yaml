@@ -1,0 +1,43 @@
+# Yaml code for creating a deployment and service for mongo db
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: assignment2-mongodb
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assignment2-mongodb
+  
+  template:
+    metadata:
+      labels:
+        app: assignment2-mongodb
+    spec:
+      # this is the specification of pods
+      containers:
+        - name: mongodbcontainer
+          image: mongo:5.0 
+          ports:
+           - containerPort: 27017
+
+---
+# Yaml for making the internal service for mongo deployment
+# Since this is db so the service will be internal service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+
+spec:
+  selector:
+    app: assignment2-mongodb
+
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017

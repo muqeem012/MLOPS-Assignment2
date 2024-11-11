@@ -1,0 +1,41 @@
+header{
+    height : 10vh;
+    box-shadow : 0px 1px 10px 1px silver;
+    display : flex;
+    position : relative;
+    align-items : center;
+}
+
+.backbutton{
+    position : absolute;
+    left : 200px;
+}
+
+.avatar{ 
+    cursor : pointer;
+    transition : all .1 linear; 
+}
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+.logo{
+    position : absolute;
+    right : 50px;
+}
+
+#navbarh2{
+    cursor : pointer;
+    transition : all .1s linear;
+}
+
+#navbarh2:hover{
+    text-decoration: underline;
+    transform : scale(1.02);
+}
+
+@media (max-width : 500px){
+    .backbutton{
+        left : 50px;
+    }
+}

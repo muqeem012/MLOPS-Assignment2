@@ -1,0 +1,42 @@
+# Yaml code for creating a deployment and service of frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: assignment2-frontend
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: assignment2-frontend
+  
+  template:
+    metadata:
+      labels:
+        app: assignment2-frontend
+    spec:
+      containers:
+        - name: frontendcontainer
+          image: muqeem/assignment2-kubernetestask-frontend:latest
+          ports:
+           - containerPort: 80
+---
+# Yaml for making the external service for frontend1 deployment
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+
+spec:
+  type: NodePort
+  selector:
+    app: assignment2-frontend
+
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30100
